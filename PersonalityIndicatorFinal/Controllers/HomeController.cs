@@ -3,26 +3,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PersonalityIndicatorFinal.Models;
+using PersonalityIndicatorFinal.ViewModel;
 
 namespace PersonalityIndicatorFinal.Controllers
 {
     public class HomeController : Controller
     {
-        private MyDBContext _context;
 
-        public HomeController()
-        {
-            _context = new MyDBContext();
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            _context.Dispose();
-
-        }
         public ActionResult Index()
         {
-            return View();
+            var questionWithAnswers = new QuestionWithAnswers()
+            {
+                Questions = new List<Question>()
+                {
+                    new Question()
+                    {
+                        QuestionNumber = 1, Questions = "How old are you?",
+                        Answers = new List<Answer>()
+                        {
+                            new Answer() {AnswerNumber = 1, Answers = "12",},
+                            new Answer() {AnswerNumber = 2, Answers = "23",},
+                            new Answer() {AnswerNumber = 3, Answers = "28",},
+                            new Answer() {AnswerNumber = 4, Answers = "35",}
+                        }
+                    },
+                    new Question()
+                    {
+                        QuestionNumber = 2, Questions = "what is your name?",
+                        Answers = new List<Answer>()
+                        {
+                            new Answer() {AnswerNumber = 1, Answers = "12",},
+                            new Answer() {AnswerNumber = 2, Answers = "23",},
+                            new Answer() {AnswerNumber = 3, Answers = "28",},
+                            new Answer() {AnswerNumber = 4, Answers = "35",}
+                        }
+                    }
+                }
+            };
+
+            return View(questionWithAnswers);
         }
 
         public ActionResult About()
