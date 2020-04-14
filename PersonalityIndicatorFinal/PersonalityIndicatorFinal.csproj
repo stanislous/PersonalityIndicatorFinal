@@ -134,6 +134,7 @@
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\NewAnswers.cs" />
     <Compile Include="ViewModel\QuestionWithAnswers.cs" />
   </ItemGroup>
   <ItemGroup>

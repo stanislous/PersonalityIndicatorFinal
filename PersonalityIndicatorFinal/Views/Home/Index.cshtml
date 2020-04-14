@@ -24,16 +24,16 @@
 @*             </thead> *@
 @*         </table> *@
 
-        @using (Html.BeginForm("Index", "Home"))
+        @using (Html.BeginForm("AddAnswers", "Home"))
         {
             foreach (var question in Model.Questions)
             {
                 <label>@question.QuestionNumber. @question.Questions</label>
                 foreach (var answer in question.Answers)
                 {
-                    <div class="radio">
+                    <div class="checkbox">
                         <label>
-                            <input type="radio"
+                            <input type="checkbox"
                                    name="Answer"/> @answer.AnswerNumber. @answer.Answers
                         </label>
                     </div>
