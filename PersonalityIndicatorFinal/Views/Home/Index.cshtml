@@ -2,45 +2,34 @@
 @{
     ViewBag.Title = "Home Page";
 }
-@*         <table class="table table-bordered table-hover"> *@
-@*             <thead> *@
-@*             <tbody> *@
-@*                 @{ *@
-@*                     foreach (var question in Model.Questions) *@
-@*                     { *@
-@*                         <tr> *@
-@*                             <td>@question.QuestionNumber @question.Questions</td> *@
-@*                         </tr> *@
-@* *@
-@*                         foreach (var answer in question.Answers) *@
-@*                         { *@
-@*                             <tr> *@
-@*                                 <td>@answer.AnswerNumber. @answer.Answers</td> *@
-@*                             </tr> *@
-@*                         } *@
-@*                     } *@
-@*                 } *@
-@*             </tbody> *@
-@*             </thead> *@
-@*         </table> *@
 
-        @using (Html.BeginForm("AddAnswers", "Home"))
-        {
-            foreach (var question in Model.Questions)
+@using (Html.BeginForm("AddAnswers", "Home"))
+{
+    foreach (var question in Model.Questions)
+    {
+        <label class="active">@question.QuestionNumber. @question.Questions</label>
+        <br />
+        <br />
+
+        <div class="btn-group" data-toggle="buttons">
+            @foreach (var answer in question.Answers)
             {
-                <label>@question.QuestionNumber. @question.Questions</label>
-                foreach (var answer in question.Answers)
-                {
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"
-                                   name="Answer"/> @answer.AnswerNumber. @answer.Answers
-                        </label>
-                    </div>
-                }
-                
+                <label class="btn btn-info btn-lg">
+                    <input type="radio" autocomplete="off" name="@question.QuestionNumber" value="@answer.AnswerNumber"> @answer.Answers
+                </label>
             }
-            <div class="form-group text-center">
-                <input type="submit" class="btn btn-primary" value="Submit"/>
-            </div>
-        }
+        </div>
+        <br />
+        <br />
+
+    }
+    <br />
+    <br />
+    <button type="submit" class="btn btn-success btn-lg" id="btnSubmit">Submit</button>
+
+}
+
+@section scripts{
+    <script src="~/Scripts/app.js"></script>
+}
+
