@@ -2,33 +2,34 @@
 @{
     ViewBag.Title = "Home Page";
 }
+    <div class="container-fluid" style="padding-left: 20px">
+        @using (Html.BeginForm("AddAnswers", "Home"))
+        {
 
-@using (Html.BeginForm("AddAnswers", "Home"))
-{
-    <hr/>
-    foreach (var question in Model.Questions)
-    {
-        <h4 align="justify"><b>@question.QuestionNumber. @question.Questions</b></h4>
-        <br />
-
-        <div class="btn-group" data-toggle="buttons">
-            @foreach (var answer in question.Answers)
+            <hr />
+            foreach (var question in Model.Questions)
             {
-                <label class="btn btn-info btn-lg">
-                    <input type="radio" autocomplete="off" name="@question.QuestionNumber @answer.AnswerNumber" value="@answer.AnswerNumber"> @answer.Answers
-                </label>
+                <h4 align="justify"><b>@question.QuestionNumber. @question.Questions</b></h4>
+                <br />
+
+                <div class="btn-group" data-toggle="buttons" style="padding-left: 10px">
+                    @foreach (var answer in question.Answers)
+                    {
+                        <label class="btn btn-info btn-lg" >
+                            <input type="radio" autocomplete="off" name="@question.QuestionNumber" value="@answer.AnswerNumber"> @answer.Answers
+                        </label>
+                    }
+                </div>
+                <br />
+                <br />
+
             }
-        </div>
-        <br />
-        <br />
+            <br />
+            <br />
+            <button type="submit" class="btn btn-success btn-lg" id="btnSubmit">Submit</button>
 
-    }
-    <br />
-    <br />
-    <button type="submit" class="btn btn-success btn-lg" id="btnSubmit">Submit</button>
-
-}
-
+        }
+    </div>
 @section scripts{
     <script src="~/Scripts/app.js"></script>
 }

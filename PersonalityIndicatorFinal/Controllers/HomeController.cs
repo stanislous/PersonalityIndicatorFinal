@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using PersonalityIndicatorFinal.Models;
 using PersonalityIndicatorFinal.ViewModel;
@@ -39,7 +36,7 @@ namespace PersonalityIndicatorFinal.Controllers
                     new Question() {
                         QuestionNumber = 8, Questions = "You think so much about new possibilities that you never look at how to make them a reality." },//S no N-yes
                     new Question() {
-                        QuestionNumber = 9, Questions = "You like to see big picture, then to find out the facts." }, //S-no N-yea 
+                        QuestionNumber = 9, Questions = "You like to see big picture, then to find out the facts." }, //S-no N-yes 
                     new Question() {
                         QuestionNumber = 10, Questions = "You remember events as snapshots of what actually happened." }, //S-yes N-no 
 
@@ -82,17 +79,24 @@ namespace PersonalityIndicatorFinal.Controllers
         }
 
         [HttpPost]
+        [Route("Result")]
         public ActionResult AddAnswers()
         {
-            var dataList = Request.Form;
 
+            var length = Request.Form.Count;
+            if (length < 20)
+            {
+                return RedirectToAction("Index");
+            }
+            var dataString = new List<string>();
             var data = new List<int>();
 
-            foreach (string s in dataList)
-            {
+            foreach (var key in Request.Form.AllKeys)
+                dataString.Add(Request.Form[key]);
+
+            foreach (string s in dataString)
                 data.Add(s.Contains("-") ? -((int)(s[s.Length-1]) - '0')  : (int)(s[s.Length-1]) - '0');
-            }
-            
+
             var dictionary = new Dictionary<string, int>
             {
                 {"I", 0}, {"E", 0}, {"S", 0}, {"N", 0}, {"T", 0}, {"F", 0}, {"J", 0}, {"P", 0}
@@ -161,7 +165,46 @@ namespace PersonalityIndicatorFinal.Controllers
                 round++;
             }
 
-            return View();
+            var person = new Personality();
+
+            if (dictionary["I"] >= dictionary["E"])
+                person.personalityType += "I";
+            else
+                person.personalityType += "E";
+            if (dictionary["N"] >= dictionary["S"])
+                person.personalityType  += "N";
+            else
+                person.personalityType += "S";
+            if (dictionary["F"] >= dictionary["T"])
+                person.personalityType += "F";
+            else
+                person.personalityType += "T";
+            if (dictionary["J"] >= dictionary["P"])
+                person.personalityType += "J";
+            else
+                person.personalityType += "P";
+
+            if (person.personalityType == "ISTJ") person.personality += "The Inspector";
+            else if (person.personalityType == "ISTP") person.personality += "The Crafter";
+            else if (person.personalityType == "ISFJ") person.personality += "The Protector";
+            else if (person.personalityType == "ISFP") person.personality += "The Artist";
+
+            else if (person.personalityType == "INFJ") person.personality += "The Advocate";
+            else if (person.personalityType == "INFP") person.personality += "The Mediator";
+            else if (person.personalityType == "INTJ") person.personality += "The Architect";
+            else if (person.personalityType == "INTP") person.personality += "The Thinker";
+
+            else if (person.personalityType == "ESTP") person.personality += "The Persuader";
+            else if (person.personalityType == "ESTJ") person.personality += "The Director";
+            else if (person.personalityType == "ESFP") person.personality += "The Performer";
+            else if (person.personalityType == "ESFJ") person.personality += "The Caregiver";
+
+            else if (person.personalityType == "ENFP") person.personality += "The Champion";
+            else if (person.personalityType == "ENFJ") person.personality += "The Giver";
+            else if (person.personalityType == "ENTP") person.personality += "The Debater";
+            else if (person.personalityType == "ENTJ") person.personality += "The Commander";
+
+            return View(person);
         }
 
         public ActionResult About()

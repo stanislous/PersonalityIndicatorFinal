@@ -1,17 +1,9 @@
-﻿
+﻿@model PersonalityIndicatorFinal.Models.Personality
 @{
-    Layout = null;
+    ViewBag.Title = "Home Page";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>AddAnswers</title>
-</head>
-<body>
-    <div> 
-    </div>
-</body>
-</html>
+<div class="container-fluid" style="padding-left: 25px;">
+    <h1>Your Personality Type</h1>
+    <h2>@Model.personality</h2>
+</div>
