@@ -15,6 +15,9 @@
         height: 600px;
     }
 }
+.col-md-6 {
+      width: 98%;
+}
 
 .btn .fa {
     margin-left: 3px;
