@@ -1,7 +1,125 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<div class="container-fluid" style="padding-left: 25px;">
-    <h2>@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
-</div>
+<body role="document" class="">
+    <div class="main-wrapper" id="main-app">
+
+        <main class="contact-us">
+
+            <header>
+
+                <div class="scene">
+                    <img src="https://static.neris-assets.com/images/team.svg?v=2">
+                </div>
+
+                <div class="caption">
+                    <h1>Contact Us</h1>
+                    <p>Please send us your questions, comments, or suggestions – we read each and every e-mail, and would love to hear from you!</p>
+                    <div class="email">
+                        <a class="no-color with-border" href="/cdn-cgi/l/email-protection#8cfff9fcfce3fef8ccbdbafce9feffe3e2ede0e5f8e5e9ffa2efe3e1"><span class="__cf_email__" data-cfemail="483b3d3838273a3c08797e382d3a3b27262924213c212d3b662b2725">[email&#160;protected]</span></a>
+                    </div>
+                    <div class="company-info">
+                        <div class="name">NERIS Analytics Limited</div>
+                        <div class="address">6 New Street Square, London, EC4A 3DJ, United Kingdom</div>
+                        <div class="registration">Registered in England and Wales, #8646330</div>
+                    </div>
+                    
+                </div>
+            </header>
+        </main>   
+        <app-data-bus :app-data="{
+        loggedIn: false
+    }"
+                      :app-routes="{
+        recordSocialShare      : 'https://www.16personalities.com/social-stats/add',
+        subscribeGuestUser     : 'https://www.16personalities.com/newsletters/guest-subscribe',
+        subscribeAuthUser      : 'https://www.16personalities.com/users/newsletters/subscribe',
+        fetchNewsletterDiscount: 'https://www.16personalities.com/orders/discount-newsletter',
+    }"></app-data-bus>
+        <share-highlighter></share-highlighter>
+
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script>
+
+        window.appRoutes = {
+            testResults: 'https://www.16personalities.com/test-results',
+            recordSocialShare: 'https://www.16personalities.com/social-stats/add'
+        }
+
+        window.appData = {
+            global: {
+                user: {
+                    email: null,
+                    password: null,
+                    newsletter: false,
+                    personality: '',
+                    personalityNice: 'Architect',
+                    variant: '',
+                    scores: [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                    ],
+                    inviteCode: '',
+                    unreadMessages: 0
+                },
+                testResults: {
+                    personality: '',
+                    variant: '',
+                    scores: [
+                        ,
+                        ,
+                        ,
+                        ,
+
+                    ],
+                },
+                modals: {
+                    results: false,
+                    login: false,
+                    forgot: false,
+                    registration: false,
+                    newComment: false,
+                    comparison: false,
+                    notifications: false,
+                    updates: false,
+                    whyRegister: false
+                },
+                states: {
+                    loggedIn: false,
+                    registrationInProgress: false,
+                    registrationCompleted: false,
+                    loadingUpdates: true,
+                }
+            },
+            test: {
+                currentSet: 1,
+                progress: 0,
+                questions: {},
+                states: {
+                    submitting: false,
+                }
+            }
+        };
+
+    </script>
+    <script src="https://static.neris-assets.com/js/manifest.js?id=9fdc892ccd0743631574"></script>
+    <script src="https://static.neris-assets.com/js/vendor.js?id=87d972b0b8263893e1fd"></script>
+    <script src="https://static.neris-assets.com/js/app.js?id=512a23a10918fa36a9d4"></script>
+
+    <script src="https://static.neris-assets.com/js/footer.js?id=799fc3e8ab3cc2fc0612"></script>
+    <script>
+
+
+        ga('send', 'pageview', {
+            'dimension2': 'donation_yes',
+            'dimension5': 'anonymous',
+        });
+
+
+    </script>
+</body>
