@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using PersonalityIndicatorFinal.DbContext;
 using PersonalityIndicatorFinal.Models;
 using PersonalityIndicatorFinal.ViewModel;
 
@@ -8,6 +9,7 @@ namespace PersonalityIndicatorFinal.Controllers
 {
     public class HomeController : Controller
     {
+        public readonly PiDBContext _piDbContext = new PiDBContext();
         public ActionResult Main()
         {
             return View();
@@ -82,6 +84,7 @@ namespace PersonalityIndicatorFinal.Controllers
         [Route("Result")]
         public ActionResult AddAnswers()
         {
+            var userAnswers = new UserAnswers();
 
             var length = Request.Form.Count;
             if (length < 20)
@@ -202,6 +205,10 @@ namespace PersonalityIndicatorFinal.Controllers
             else if (person.personalityType == "ENFJ") person.personality += "The Giver";
             else if (person.personalityType == "ENTP") person.personality += "The Debater";
             else if (person.personalityType == "ENTJ") person.personality += "The Commander";
+
+            userAnswers.AnswerList = Request.Form.ToString();
+            _piDbContext.UserAnswers.Add(userAnswers);
+            _piDbContext.SaveChanges();
 
             return View(person);
         }

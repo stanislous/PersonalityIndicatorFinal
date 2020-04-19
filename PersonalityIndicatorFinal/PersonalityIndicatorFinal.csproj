@@ -127,11 +127,24 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DbContext\PiDBContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004191025007_Initial.cs" />
+    <Compile Include="Migrations\202004191025007_Initial.designer.cs">
+      <DependentUpon>202004191025007_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004191110243_AddedUsersTable.cs" />
+    <Compile Include="Migrations\202004191110243_AddedUsersTable.designer.cs">
+      <DependentUpon>202004191110243_AddedUsersTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Answer.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserAnswers.cs" />
     <Compile Include="Models\Personality.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -143,6 +156,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\login.css" />
     <Content Include="Content\myStyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\93361818_287308275594333_8381487940655644672_ntytyy.jpg" />
@@ -182,6 +196,8 @@
     <Content Include="Views\Home\AddAnswers.cshtml" />
     <Content Include="Views\Home\Main.cshtml" />
     <Content Include="Views\Home\JobType.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\SignUp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -198,6 +214,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202004191025007_Initial.resx">
+      <DependentUpon>202004191025007_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004191110243_AddedUsersTable.resx">
+      <DependentUpon>202004191110243_AddedUsersTable.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
