@@ -197,7 +197,7 @@
     <Content Include="Views\Home\Main.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\SignUp.cshtml" />
-    <Content Include="Views\Home\JobType.aspx" />
+    <Content Include="Views\Home\JobType.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

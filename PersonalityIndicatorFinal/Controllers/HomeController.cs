@@ -226,9 +226,8 @@ namespace PersonalityIndicatorFinal.Controllers
         }
         [HttpPost]  
         public ActionResult JobType()
-        {
-            var x = TempData["Type"];
-            return View("JobType",x.ToString());
+        {       
+            return View("JobType",TempData["Type"]);
         }
     }
 }
