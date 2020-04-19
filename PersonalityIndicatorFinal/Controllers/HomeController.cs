@@ -210,6 +210,8 @@ namespace PersonalityIndicatorFinal.Controllers
             _piDbContext.UserAnswers.Add(userAnswers);
             _piDbContext.SaveChanges();
 
+            TempData["Type"] = person.personality;
+
             return View(person);
         }
 
@@ -222,11 +224,11 @@ namespace PersonalityIndicatorFinal.Controllers
         {      
             return View();
         }
-        [HttpPost]
+        [HttpPost]  
         public ActionResult JobType()
         {
-            var x = Request.Form;
-            return View();
+            var x = TempData["Type"];
+            return View("JobType",x.ToString());
         }
     }
 }

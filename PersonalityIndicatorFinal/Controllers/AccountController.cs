@@ -33,8 +33,7 @@ namespace PersonalityIndicatorFinal.Controllers
             {
                 ModelState.AddModelError("","Invalid UserName or Passward.");
                 return View();
-            }
-            
+            }           
         }
 
         public ActionResult SignUp()

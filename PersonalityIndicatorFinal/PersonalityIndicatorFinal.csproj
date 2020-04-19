@@ -195,9 +195,9 @@
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Home\AddAnswers.cshtml" />
     <Content Include="Views\Home\Main.cshtml" />
-    <Content Include="Views\Home\JobType.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\SignUp.cshtml" />
+    <Content Include="Views\Home\JobType.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

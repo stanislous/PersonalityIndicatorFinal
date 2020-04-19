@@ -6,3 +6,9 @@
     padding-left: 376px;
     padding-right: 0;
 }
+
+input#Passward{
+    border: 1px solid darkgray;
+    padding: 7px 15px 11px 15px;
+    width: 280px;
+}
