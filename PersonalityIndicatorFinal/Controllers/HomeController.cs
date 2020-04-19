@@ -102,6 +102,7 @@ namespace PersonalityIndicatorFinal.Controllers
                 {"I", 0}, {"E", 0}, {"S", 0}, {"N", 0}, {"T", 0}, {"F", 0}, {"J", 0}, {"P", 0}
             };
           
+            var person = new Personality();
             var round = 1;
             foreach (var s in data)
             {
@@ -163,9 +164,7 @@ namespace PersonalityIndicatorFinal.Controllers
                 }
 
                 round++;
-            }
-
-            var person = new Personality();
+            }            
 
             if (dictionary["I"] >= dictionary["E"])
                 person.personalityType += "I";
@@ -208,16 +207,18 @@ namespace PersonalityIndicatorFinal.Controllers
         }
 
         public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
+        {     
             return View();
         }
 
         public ActionResult Contact()
+        {      
+            return View();
+        }
+        [HttpPost]
+        public ActionResult JobType()
         {
-            ViewBag.Message = "Your contact page.";
-
+            var x = Request.Form;
             return View();
         }
     }

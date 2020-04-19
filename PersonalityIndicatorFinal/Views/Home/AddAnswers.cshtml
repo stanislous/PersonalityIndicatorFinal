@@ -3,9 +3,17 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="container-fluid" style="padding-left: 25px;">
-    <h1>Personality Type</h1>
-    <hr />
-    <h2>Your Personality Type: @Model.personalityType</h2>
-    <h2>Your Job Type: @Model.personality</h2>
-</div>
+@using (Html.BeginForm("JobType", "Home"))
+{
+    <div class="container-fluid" style="padding-left: 25px;">
+        <h1>Personality Type</h1>
+        <hr />
+        <h2>Your Personality Type is @Model.personalityType</h2>
+    </div>
+
+    
+
+    <button type="submit" class="btn btn-success btn-lg" id="btnSubmit" style="padding-left: 86px; padding-right: 86px; margin-left: 40px">
+        Your Job Type
+    </button>
+}
