@@ -207,6 +207,8 @@ namespace PersonalityIndicatorFinal.Controllers
             else if (person.personalityType == "ENTJ") person.personality += "The Commander";
 
             userAnswers.AnswerList = Request.Form.ToString();
+            userAnswers.UserName = TempData["UserData"].ToString();
+
             _piDbContext.UserAnswers.Add(userAnswers);
             _piDbContext.SaveChanges();
 
@@ -227,7 +229,7 @@ namespace PersonalityIndicatorFinal.Controllers
         [HttpPost]  
         public ActionResult JobType()
         {       
-            return View("JobType",TempData["Type"]);
+            return View("JobType", TempData["Type"]);
         }
     }
 }

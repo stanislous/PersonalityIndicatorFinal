@@ -27,6 +27,7 @@ namespace PersonalityIndicatorFinal.Controllers
                 _PiDbContext.Users.Any(x => x.UserName == user.UserName & x.Passward == user.Passward);
             if (userIsAvailable)
             {
+                TempData["UserData"] = user.UserName;
                 return RedirectToAction("Main", "Home");
             }
             else
@@ -47,6 +48,13 @@ namespace PersonalityIndicatorFinal.Controllers
             if (user == null)
             {
                 RedirectToAction("SignUp", "Account");
+            }
+            bool userIsAvailable =
+                _PiDbContext.Users.Any(x => x.UserName == user.UserName);
+            if (userIsAvailable)
+            {
+                ModelState.AddModelError("", "UserName already in use.");
+                return View();
             }
 
             _PiDbContext.Users.Add(user);
