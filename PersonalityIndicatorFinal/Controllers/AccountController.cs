@@ -28,6 +28,7 @@ namespace PersonalityIndicatorFinal.Controllers
             if (userIsAvailable)
             {
                 TempData["UserData"] = user.UserName;
+                TempData["Type"] = user.UserName;
                 return RedirectToAction("Main", "Home");
             }
             else

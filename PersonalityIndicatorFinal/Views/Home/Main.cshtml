@@ -2,40 +2,44 @@
     ViewBag.Title = "Home Page";
 }
 
- @using (Html.BeginForm("Index", "Home"))
- {
-     <link href="~/Content/myStyle.css" rel="stylesheet"/>
-     <!-- Main navigation -->
-     <header>
-         <!-- Full Page Intro -->
-         <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/architecture.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;height: 800px">
-             <!-- Mask & flexbox options-->
-             <div class="mask rgba-gradient d-flex justify-content-center align-items-center">
-                 <!-- Content -->
-                 <div class="container">
-                     <!--Grid row-->
-                     <div class="row">
-                         <!--Grid column-->
-                         <div class="col-md-6 white-text text-center text-md-left mt-xl-5 mb-5 wow fadeInLeft" data-wow-delay="0.3s">
-                             <h1 class="h1-responsive font-weight-bold mt-sm-5">Personality Test</h1>
-                             <hr class="hr-light">
-                             <h4 class="mb-4">
-                                 Take our Personality Test and get a “freakishly accurate” description of who you are and why you do things the way you do.
-                             </h4>
-                             <button type="submit" class="btn btn-primary btn-lg" id="btnSubmit">Take Your Test</button>
-                         </div>
-                         <!--Grid column-->
-                         <!--Grid column-->
-                         <div class="col-md-6 col-xl-5 mt-xl-5 wow fadeInRight" data-wow-delay="0.3s">
-                         </div>
-                         <!--Grid column-->
-                     </div>
-                     <!--Grid row-->
-                 </div>
-                 <!-- Content -->
-             </div>
-             <!-- Mask & flexbox options-->
-         </div>
-         <!-- Full Page Intro -->
-     </header>
- }
+@using (Html.BeginForm("Index", "Home"))
+{
+    <link href="~/Content/myStyle.css" rel="stylesheet" />
+    <!-- Main navigation -->
+    <header>
+        <!-- Full Page Intro -->
+        <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/architecture.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;height: 800px">
+            <!-- Mask & flexbox options-->
+            <div class="mask rgba-gradient d-flex justify-content-center align-items-center">
+                <!-- Content -->
+                <div class="container">
+                    <!--Grid row-->
+                    <div class="row">
+                        <!--Grid column-->
+                        <div class="col-md-6 white-text text-center text-md-left mt-xl-5 mb-5 wow fadeInLeft" data-wow-delay="0.3s">
+                            <h1 class="h1-responsive font-weight-bold mt-sm-5">Personality Test</h1>
+                            <hr class="hr-light">
+                            <h4 class="mb-4">
+                                Take our Personality Test and get a “freakishly accurate” description of who you are and why you do things the way you do.
+                            </h4>
+                            <button type="submit" class="btn btn-primary btn-lg" id="btnSubmit">Take Your Test</button>
+                        </div>
+                        <div class="col-md-6 col-xl-5 mt-xl-5 wow fadeInRight" data-wow-delay="0.3s">
+                        </div>
+                        <!--Grid column-->
+                    </div>
+                    <!--Grid row-->
+                </div>
+                <!-- Content -->
+            </div>
+            <!-- Mask & flexbox options-->
+        </div>
+        <!-- Full Page Intro -->
+    </header>
+}
+
+@* @section scripts{ *@
+@* <script> *@
+@*     if(@TempData["Type"].ToString() === null) alert(" You need to login or sign up first."); *@
+@* </script> *@
+@* } *@

@@ -2,34 +2,81 @@
 @{
     ViewBag.Title = "Home Page";
 }
-    <div class="container-fluid" style="padding-left: 20px">
-        @using (Html.BeginForm("AddAnswers", "Home"))
+<div class="container-fluid" style="padding-left: 20px">
+    @using (Html.BeginForm("AddAnswers", "Home"))
+    {
+        <hr />
+        foreach (var question in Model.Questions)
         {
-
-            <hr />
-            foreach (var question in Model.Questions)
-            {
+            <div id="Question_@question.QuestionNumber" style="display:none">
                 <h4 align="justify"><b>@question.QuestionNumber. @question.Questions</b></h4>
                 <br />
-
                 <div class="btn-group" data-toggle="buttons" style="padding-left: 10px">
                     @foreach (var answer in question.Answers)
                     {
-                        <label class="btn btn-info btn-lg" >
+                        <label class="btn btn-info btn-lg btn-ans">
                             <input type="radio" autocomplete="off" name="@question.QuestionNumber" value="@answer.AnswerNumber"> @answer.Answers
                         </label>
                     }
                 </div>
                 <br />
                 <br />
-            }
-            <br />
-            <br />
-            <button type="submit" class="btn btn-success btn-lg" id="btnSubmit" style="padding-left: 86px; padding-right: 86px;">Submit</button>
-
+            </div>
         }
-    </div>
-@section scripts{
-    <script src="~/Scripts/app.js"></script>
-}
+        <br />
+        <br />
+        <button type="button" class="btn btn-success btn-lg" id="btnNext" style="padding-left: 86px; padding-right: 86px;">Next</button>
+        <button type="submit" class="btn btn-success btn-lg" id="btnSubmit" style="padding-left: 86px; padding-right: 86px;display:none">Submit</button>
 
+    }
+</div>
+
+@section scripts{
+    <script>
+
+        $('.btn-ans').click(function () {
+
+            $(this).siblings().removeClass("btn-warning");
+            $(this).siblings().addClass("btn-info");
+            if ($(this).hasClass("btn-info")) {
+                $(this).removeClass("btn-info");
+                $(this).addClass("btn-warning");
+            }
+        });
+
+
+        var QNum = 1;
+        $("#Question_" + QNum).show();
+        $("#Question_" + parseInt(QNum + 1)).show();
+        $("#Question_" + parseInt(QNum + 2)).show();
+        $("#Question_" + parseInt(QNum + 3)).show();
+        $("#Question_" + parseInt(QNum + 4)).show();
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+
+
+        $('#btnNext').click(function () {
+
+            if (QNum <= 16) {
+
+                $("#Question_" + QNum).hide();
+                $("#Question_" + parseInt(QNum + 1)).hide();
+                $("#Question_" + parseInt(QNum + 2)).hide();
+                $("#Question_" + parseInt(QNum + 3)).hide();
+                $("#Question_" + parseInt(QNum + 4)).hide();
+                QNum = QNum + 5;
+                $("#Question_" + QNum).show();
+                $("#Question_" + parseInt(QNum + 1)).show();
+                $("#Question_" + parseInt(QNum + 2)).show();
+                $("#Question_" + parseInt(QNum + 3)).show();
+                $("#Question_" + parseInt(QNum + 4)).show();
+
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+            }
+
+            if (QNum == 16) {
+                $("#btnNext").hide();
+                $("#btnSubmit").show();
+            }
+        });
+    </script>
+}

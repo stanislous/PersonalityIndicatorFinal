@@ -16,6 +16,10 @@ namespace PersonalityIndicatorFinal.Controllers
         }
         public ActionResult Index()
         {
+//            if (TempData["Type"].ToString() == "")
+//            {
+//                return RedirectToAction("Login", "Account");
+//            }
             var questionWithAnswers = new QuestionWithAnswers()
             {
                 Questions = new List<Question>()
@@ -221,10 +225,16 @@ namespace PersonalityIndicatorFinal.Controllers
         {     
             return View();
         }
-
+        [HttpGet]
         public ActionResult Contact()
         {      
             return View();
+        }
+        [HttpPost]
+        public ActionResult Contact(Contact contact)
+        {
+            contact.UserName = TempData["Type"].ToString();
+            return RedirectToAction("Main","Home");
         }
         [HttpPost]  
         public ActionResult JobType()
